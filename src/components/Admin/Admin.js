@@ -1,9 +1,30 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
+import { Link } from 'react-router-dom';
+import './Admin.css'
 const Admin = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const [imageURL, setImageURL] = useState(null)
+    const onSubmit = data => {
+        // console.log(data)
+        const eventData = {
+            name: data.name,
+            price: data.price,
+            weight: data.weight,
+            imageURL: imageURL
+        };
+        const url = `http://localhost:5055/addProduct`
+        console.log('eventData')
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(eventData)
+        })
+        .then(res => console.log('server side response: ',res))
+    };
     const handleImageUpload = event => {
         console.log(event.target.files[0])
         const imageData = new FormData();
@@ -12,7 +33,7 @@ const Admin = () => {
 
         axios.post('https://api.imgbb.com/1/upload', imageData)
           .then(function (response) {
-            console.log(response.data.data.display_url)
+            setImageURL(response.data.data.display_url)
           })
           .catch(function (error) {
             console.log(error);
@@ -20,19 +41,38 @@ const Admin = () => {
 
     }
     return (
-        <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-            <input  {...register("example")} placeholder='Enter Name' />
-            <br/>
-            <input {...register("exampleRequired", { required: true })} placeholder='Enter Price' />
-            {errors.exampleRequired && <span>This field is required</span>}
-            <br/>
-            <input type="text" placeholder='Enter Weight'/>
-            <br/>
-            <input type="file" onChange={handleImageUpload} />
-            <br/>
-            <input type="submit" />
-            </form>
+        <div className='w-100 d-flex'>
+            <div className='w-25 my-5 inventory'>
+                <h4><Link to='/order' style={{color:'black', textDecoration:'none',marginBottom:'10px'}}>Manage Product</Link> </h4>
+                <h4><Link to='/admin' style={{color:'black', textDecoration:'none'}}>Add Product</Link></h4>
+            </div>
+            <div className='w-75'>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                <div className='d-flex'>  
+                    <div className='gap'>
+                        
+                        <input name="name" {...register("name", { required: true })} placeholder='Product Name' />
+                    </div>
+                    <div className='gap'>
+                        
+                        <input {...register("price", { required: true })} placeholder='Product Price' />
+                        {errors.exampleRequired && <span>This field is required</span>}
+                    </div>
+                </div> 
+                <div className='d-flex'>
+                    <div className='gap'>
+                        
+                        <input type="text" {...register("weight", { required: true })} placeholder='Product Weight'/>
+                    </div>
+                   <div className='gap'>
+                        
+                        <input type="file" {...register("imageURL", { required: true })} onChange={handleImageUpload} />   
+                    </div> 
+                    <br/>
+                </div>    
+                    <input className="my-5 btn btn-success px-5" value='SAVE' type="submit" />
+                </form>
+            </div>
         </div>
     );
 };

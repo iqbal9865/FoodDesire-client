@@ -1,0 +1,11 @@
+input
+{
+    display: block;
+    width: 400px;
+    height: 38px;
+    border-radius: 5px;
+}
+.gap{
+    margin-top:40px;
+    margin-right: 60px;
+}
