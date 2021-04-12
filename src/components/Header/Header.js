@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../App';
 import './Header.css'
 const Header = () => {
+    const [logInUser, setLogInUser] = useContext(UserContext)
     return (
         <div>
            <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -22,7 +24,8 @@ const Header = () => {
                     <Link class="nav-link" style={{color:'black', fontSize: '20px'}} to="/admin">Admin</Link>
                     </li>
                     <li class="nav-item">
-                    <button className='btn btn-success'><Link class="nav-link" style={{color:'white', fontSize: '20px', padding: '01px'}} to="/login" tabindex="-1">Login</Link></button>
+                    {logInUser.email ? <strong style={{color: 'green',textDecoder: 'underline',marginTop:'20px'}}>{logInUser.email}</strong> : 
+                    <Link to='/login'><button className='btn btn-success' style={{fontSize:'20px'}}>Login</button></Link>}
                     </li>
                 </ul>
                 </div>

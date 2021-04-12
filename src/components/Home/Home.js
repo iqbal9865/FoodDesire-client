@@ -10,6 +10,13 @@ const Home = () => {
     },[])
     return (
         <div className='row'>
+            {
+                events.length === 0 && <div class="d-flex justify-content-center">
+                <div class="spinner-border text-success" role="status">
+                  <span class="sr-only"></span>
+                </div>
+              </div>
+            }
            {
                events.map(event => <Items event={event} key={event._id}></Items>)
            }

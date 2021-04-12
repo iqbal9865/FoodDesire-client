@@ -42,9 +42,9 @@ const Admin = () => {
     }
     return (
         <div className='w-100 d-flex'>
-            <div className='w-25 my-5 inventory'>
-                <h4><Link to='/order' style={{color:'black', textDecoration:'none',marginBottom:'10px'}}>Manage Product</Link> </h4>
-                <h4><Link to='/admin' style={{color:'black', textDecoration:'none'}}>Add Product</Link></h4>
+            <div style={{backgroundColor:'#90EE90',borderRadius:'10px'}} className='w-25 m-5 inventory h-100'>
+                <h5 className='my-5'><Link to='/manageorder' style={{color:'white', textDecoration:'none', backgroundColor:'#198754',padding:'5px',borderRadius:'5px',padding:'8px'}}>Manage Product</Link> </h5>
+                <h5 className='my-5'><Link to='/admin' style={{color:'white', textDecoration:'none',padding:'5px',borderRadius:'5px',backgroundColor:'#198754',padding:'8px'}}>Add Product</Link></h5>
             </div>
             <div className='w-75'>
                 <form onSubmit={handleSubmit(onSubmit)}>
