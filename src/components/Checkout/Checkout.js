@@ -13,9 +13,9 @@ const Checkout = () => {
         .then(data => setProducts(data.find(product => product._id === _id)))
     },[])
     const {name, price, weight,imageURL} = products;
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const {  handleSubmit,formState: {} } = useForm();
   const onSubmit = () => {
-    //   console.log(logInUser.email, price, new Date(),logInUser.name);
+    //   console.log(logInUser.email, price, new Date(),logInUser.name,setLogInUser,watch,register);
       const orderDetails = {email: logInUser.email, name, price, date: new Date()}
       
 
