@@ -24,7 +24,7 @@ const Header = () => {
                     <Link class="nav-link" style={{color:'black', fontSize: '20px'}} to="/admin">Admin</Link>
                     </li>
                     <li class="nav-item">
-                    {logInUser.email ? <strong style={{color: 'green',textDecoder: 'underline'}}>{logInUser.email}</strong> : 
+                    {logInUser.email ? <strong style={{color: 'green',textDecoder: 'underline'}}>{logInUser.name}</strong> : 
                     <Link to='/login'><button className='btn btn-success' style={{fontSize:'20px'}}>Login</button></Link>}
                     </li>
                 </ul>
