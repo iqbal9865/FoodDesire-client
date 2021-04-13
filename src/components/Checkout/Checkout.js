@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useForm } from "react-hook-form";
 import {UserContext} from '../../App'
+
 const Checkout = () => {
     const [logInUser, setLogInUser] = useContext(UserContext)
     const {_id} = useParams()

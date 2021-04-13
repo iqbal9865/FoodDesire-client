@@ -28,7 +28,7 @@ const Manageproduct = () => {
         <div className='w-75 m-auto mx-5 my-3' style={{backgroundColor:'lightgray', borderRadius:'10px'}}>
             {
                 
-                events.map(event => <div style={{backgroundColor:'lightgray', borderRadius:'10px'}} className='hideElement w-75 d-flex m-auto py-1'>
+                events.map(event => deleteProduct && <div style={{backgroundColor:'lightgray', borderRadius:'10px'}} className='hideElement w-75 d-flex m-auto py-1'>
                     <h5 className='w-25'>{event.name}</h5>
                     <h5 className='w-25'>${event.price}</h5>
                     <button className='mx-3 my-2 btn btn-danger w-25' onClick={() => deleteProduct(event._id)}>Delete</button>
