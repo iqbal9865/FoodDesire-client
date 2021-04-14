@@ -4,7 +4,7 @@ import Items from '../Items/Items';
 const Home = () => {
     const [events, setEvents] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:5055/products')
+        fetch('https://rocky-plateau-95146.herokuapp.com/products')
         .then(res => res.json())
         .then(data => setEvents(data))
     },[])

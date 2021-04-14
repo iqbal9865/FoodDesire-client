@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 const Manageproduct = () => {
      const [events, setEvents] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:5055/products')
+        fetch('https://rocky-plateau-95146.herokuapp.com/products')
         .then(res => res.json())
         .then(data => setEvents(data))
     },[])
    const deleteProduct = (id) => {
 
         console.log('unique id : ',id)
-        fetch(`http://localhost:5055/delete/${id}`,{
+        fetch(`https://rocky-plateau-95146.herokuapp.com/delete/${id}`,{
             method: 'DELETE'
         })
         .then(res => res.json())

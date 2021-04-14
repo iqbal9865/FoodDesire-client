@@ -8,7 +8,7 @@ const Checkout = () => {
     const {_id} = useParams()
     const [products, setProducts] = useState({})
     useEffect(()=>{
-        fetch('http://localhost:5055/products')
+        fetch('https://rocky-plateau-95146.herokuapp.com/products')
         .then(res => res.json())
         .then(data => setProducts(data.find(product => product._id === _id)))
     },[])
@@ -19,7 +19,7 @@ const Checkout = () => {
       const orderDetails = {email: logInUser.email, name, price, date: new Date()}
       
 
-      fetch(`http://localhost:5055/addOrder`,{
+      fetch(`https://rocky-plateau-95146.herokuapp.com/addOrder`,{
           method: 'POST',
           headers:{
               'Content-Type': 'application/json'
